@@ -8,16 +8,21 @@ import MessageBox from './components/CommentBox/CommentBox';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import Comment from './components/Comment.js/Comment';
 import CommentHistory from './components/CommentHistory/CommentHistory';
+import UserList from './components/UserList/UserList';
 
 const seeBorders = false;
 
 
 function App() {
 
-  const [comments, setComments] = useState(['A']);
+  const [comments, setComments] = useState(new Array<String>());
 
   const sendComment = (comment: string)=>{
     setComments([...comments, comment]);
+  }
+
+  const user = {
+    logged: true
   }
 
   useEffect(()=>{
@@ -40,10 +45,7 @@ function App() {
           <Col id="user-list" xs={4} md={3} style={{borderStyle: seeBorders ? 'solid' : ''}}>
             <Card style={{height:'69vh'}}>
               <Card.Body>
-                <Row>User</Row>
-                <Row>User</Row> 
-                <Row>User</Row> 
-                <Row>User</Row>   
+                <UserList users={user}/> 
               </Card.Body>
             </Card>
           </Col>

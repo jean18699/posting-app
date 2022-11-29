@@ -9,10 +9,20 @@ const CommentBox = (props:any)=>{
         <div>
             <Row style={{marginTop: '2vh'}}>
                 <Col xs={9} md={10}>
-                     <textarea onChange={ e => setText(e.target.value)} style={{height: '8vh', width: '100%'}} placeholder="write here..."></textarea>
+                     <textarea 
+                        id="chatbox" 
+                        onChange={ e => setText(e.target.value)} 
+                        style={{height: '8vh', width: '100%'}} 
+                        placeholder="write here..."
+                        value={text}>
+                    </textarea>
                 </Col>
                 <Col xs={3} md={2}>
-                    <Button onClick={()=> props.clickSend(text)} color="primary">Enviar</Button>
+                    <Button onClick={()=> {
+                        props.clickSend(text)
+                        setText('')
+                    }
+                    } color="primary">Enviar</Button>
                 </Col>
             </Row>
         </div>
